@@ -4,9 +4,9 @@ A basic example of using a [React](https://reactjs.org/) application with [Starl
 
 # Setup
 
-**Requirements**: Python 3.6+
-
 ## Backend
+
+**Requirements**: Python 3.6+
 
 - Install `starlette` and `uvicorn` from the requirements file in the backend directory:
     
