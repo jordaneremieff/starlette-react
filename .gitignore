@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# VSCode
+.vscode
+
+# locally installed node modules
+node_modules/
+
+# rendered react assets
+backend/static/
