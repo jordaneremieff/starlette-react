@@ -1,6 +1,8 @@
 # starlette-react
 
-A basic example of using a [React](https://reactjs.org/) application with [Starlette](https://www.starlette.io/).
+Fork of a basic example of using a [React](https://reactjs.org/) application with [Starlette](https://www.starlette.io/).
+
+This one works with the newer Starlette API and has some logic for pre-rendering the React components and serving them from Starlette server instead of running a separate node server to serve front end.
 
 ## Setup
 
@@ -10,11 +12,11 @@ A basic example of using a [React](https://reactjs.org/) application with [Starl
 
 - Install `starlette` and `uvicorn` from the requirements file in the backend directory:
     
-    `pip install -r requirements.txt --upgrade`
+    `pip install -r backend/requirements.txt --upgrade`
 
 - Run the application using `uvicorn`:
 
-    `python app.py`
+    `make run` / `$ python backend/app.py serve`
 
 [Uvicorn](https://www.uvicorn.org/) is the [ASGI](https://asgi.readthedocs.io/en/latest/) server used to run the application in this example, however other ASGI servers, such as [Hypercorn](https://pgjones.gitlab.io/hypercorn/) and [Daphne](https://github.com/django/daphne) could be used as well.
 
@@ -24,8 +26,12 @@ The React app was initially created using the `create-react-app` command.
 
 - Install the dependencies:
 
-    `yarn install`
+    `cd frontend; yarn install`
 
-- Run the server:
+- Run the server for local development:
 
-    `yarn start`
+    `cd frontend; yarn start`
+
+- Build front end assets to serve from the Python app:
+
+    `make build`
