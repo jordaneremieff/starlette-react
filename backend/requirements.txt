@@ -1,3 +1,5 @@
 # Current pypi version doesn't have the CORS middleware
 -e git+https://github.com/encode/starlette@master#egg=starlette
 uvicorn
+beautifulsoup4
+requests
