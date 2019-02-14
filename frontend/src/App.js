@@ -1,26 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 
+const Review = ({review}) => {
+  return (
+    <tr>
+      <td>{review.yelp_rating}</td>
+      <td>{review.model_rating}</td>
+      <td>{review.text}</td>
+    </tr>
+  );
+};
 
-class Review extends React.Component {
-  render() {
-    const review = this.props.review;
-    return (
-      <tr>
-        <td>{review.yelp_rating}</td>
-        <td>{review.model_rating}</td>
-        <td>{review.text}</td>
-      </tr>
-    );
-  }
-}
-
-class Business extends React.Component {
-  render() {
-    if (!this.props.data) {
-      return null;
-    }
-    const data = this.props.data;
+const Business = ({data}) => {
+  if (!data) return null;
   return (
     <div>
       <li>Business Name: {data.name}</li> 
@@ -31,37 +23,35 @@ class Business extends React.Component {
       <Reviews reviews={data.reviews} />
     </div>
   );
-  }
-}
+};
 
-
-class Reviews extends React.Component {
-  render() {
-    const reviews = this.props.reviews;
-    const listItems = reviews.map((review) =>
-    <tr>
-      <Review review={review} />
-    </tr>
-  );
+const Reviews = ({reviews}) => {
+  const listItems = reviews.map((review, i) => <Review key={i} review={review} />);
   return (
     <table>
+      <thead>
         <tr>
           <th>Yelp Rating</th>
           <th>Model Rating</th>
           <th>Review</th> 
         </tr>
-      {listItems}
+      </thead>
+      <tbody>
+        {listItems}
+      </tbody>
     </table>
-    
   );
-  }
-}
+};
 
 export default class App extends React.Component {
-  state = { data: null, name: '', reviews: {} };
+  state = {
+    data: null,
+    name: '',
+    reviews: {}
+  };
 
   handleChange = event => {
-    this.setState({ name: event.target.value });
+    this.setState({name: event.target.value});
   }
 
   handleSubmit = event => {
@@ -79,18 +69,15 @@ export default class App extends React.Component {
     
     return (
       <div>
-      <div>
         <form onSubmit={this.handleSubmit}>
           <label>
-            <strong>Enter Yelp URL: </strong>
+            <strong>Enter Yelp URL:</strong>
             <input type="text" name="name" onChange={this.handleChange} />
           </label>
           <button type="submit">Submit</button>
         </form>
-      </div>
         <Business data={data} />
       </div>
-      
-    )
+    );
   }
 }
