@@ -8,8 +8,6 @@ RUN pip install -r requirements.txt
 
 COPY backend backend/
 
-RUN python backend/server.py
-
 EXPOSE 5042
 
 CMD ["python", "backend/app.py", "serve"]
