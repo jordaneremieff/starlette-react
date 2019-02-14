@@ -3,11 +3,13 @@ import axios from 'axios';
 
 const Review = ({review}) => {
   return (
-    <tr>
-      <td>{review.yelp_rating}</td>
-      <td>{review.model_rating}</td>
-      <td>{review.text}</td>
-    </tr>
+    <div className="review">
+      <p className="review-text">{review.text}</p>
+      <div className="review-ratings">
+        <p className="yelp-rating">Yelp Rating: {review.yelp_rating}</p>
+        <p className="model-rating">Model Rating: {review.model_rating}</p>
+      </div>
+    </div>
   );
 };
 
@@ -22,26 +24,10 @@ const Business = ({data}) => {
         <li>Model Rating: (model predicted scores of 20 most relevant reviews averaged out): {data.model_rating}</li>
       </ul>
       <strong>Reviews</strong>
-      <Reviews reviews={data.reviews} />
+      <div className="reviews">
+        {data.reviews.map((review, i) => <Review key={i} review={review} />)}
+      </div>
     </div>
-  );
-};
-
-const Reviews = ({reviews}) => {
-  const listItems = reviews.map((review, i) => <Review key={i} review={review} />);
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Yelp Rating</th>
-          <th>Model Rating</th>
-          <th>Review</th> 
-        </tr>
-      </thead>
-      <tbody>
-        {listItems}
-      </tbody>
-    </table>
   );
 };
 
