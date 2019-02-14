@@ -66,7 +66,7 @@ export default class App extends React.Component {
 
     const url = encodeURIComponent(this.state.name);
 
-    axios.get(`http://localhost:5042/business/${url}`)
+    axios.get(`https://localhost:5042/business/${url}`)
       .then(response => this.setState({data: response.data, loading: false}))
       .catch((error) => {
         this.setState({loading: false});
