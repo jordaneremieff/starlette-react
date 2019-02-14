@@ -14,10 +14,11 @@ app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_headers=["*"], allow_methods=["*"]
 )
 
-@app.route("/business/{name:path}")
+@app.route("/business")
+#@app.route("/business/{name:path}")
 class Hello(HTTPEndpoint):
     async def get(self, request):
-        name = request.path_params['name']
+        name = request.query_params['url']
         biz = scrape_yelp_biz(name, None)
         return biz_to_json(biz)
 
