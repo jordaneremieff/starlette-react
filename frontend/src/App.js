@@ -49,6 +49,7 @@ export default class App extends React.Component {
   state = {
     data: null,
     name: '',
+    loading: false,
     reviews: {}
   };
 
@@ -58,12 +59,19 @@ export default class App extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let url = encodeURIComponent(this.state.name);
+
+    if (this.state.loading) return;
+
+    this.setState({loading: true});
+
+    const url = encodeURIComponent(this.state.name);
+
     axios.get(`http://localhost:5042/business/${url}`)
-      .then(response => this.setState({ data: response.data }))
-      .catch(function (error) {
+      .then(response => this.setState({data: response.data, loading: false}))
+      .catch((error) => {
+        this.setState({loading: false});
         console.log('Fetch error: ' + error.message);
-      })
+      });
   }
 
   render() {
@@ -74,9 +82,9 @@ export default class App extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             <strong>Enter Yelp URL:</strong>
-            <input type="text" name="name" onChange={this.handleChange} />
+            <input type="text" name="name" onChange={this.handleChange} value={this.state.name} />
           </label>
-          <button type="submit">Submit</button>
+          <button type="submit">{this.state.loading ? 'Loading...' : 'Submit'}</button>
         </form>
         <Business data={data} />
       </div>
