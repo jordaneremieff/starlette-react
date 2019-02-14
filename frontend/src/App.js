@@ -69,15 +69,13 @@ export default class App extends React.Component {
     
     return (
       <div>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              <strong>Enter Yelp URL: </strong>
-              <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <strong>Enter Yelp URL:</strong>
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
         <Business data={data} />
       </div>
     );
