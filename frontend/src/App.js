@@ -67,7 +67,7 @@ export default class App extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     let url = encodeURIComponent(this.state.name);
-    axios.get(`http://localhost:5432/business/${url}`)
+    axios.get(`http://localhost:5042/business/${url}`)
       .then(response => this.setState({ data: response.data }))
       .catch(function (error) {
         console.log('Fetch error: ' + error.message);

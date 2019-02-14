@@ -12,11 +12,11 @@ This one works with the newer Starlette API and has some logic for pre-rendering
 
 - Install `starlette` and `uvicorn` from the requirements file in the backend directory:
     
-    `pip install -r backend/requirements.txt --upgrade`
+    `pip install -r requirements.txt --upgrade`
 
 - Run the application using `uvicorn`:
 
-    `make run` / `$ python backend/app.py serve`
+    `make run` / `python backend/app.py serve`
 
 [Uvicorn](https://www.uvicorn.org/) is the [ASGI](https://asgi.readthedocs.io/en/latest/) server used to run the application in this example, however other ASGI servers, such as [Hypercorn](https://pgjones.gitlab.io/hypercorn/) and [Daphne](https://github.com/django/daphne) could be used as well.
 
