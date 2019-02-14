@@ -1,3 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -13,8 +23,32 @@ code {
     monospace;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .app {
   max-width: 1020px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.reviews {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.review {
+  padding: 20px;
+  font-size: 16px;
+  max-width: 50%;
+  border-bottom: 1px solid #888;
+  border-right: 1px solid #888;
+}
+
+.review-text {
+  line-height: 1.33;
+  margin-bottom: 20px;
 }
