@@ -15,10 +15,12 @@ const Business = ({data}) => {
   if (!data) return null;
   return (
     <div>
-      <li>Business Name: {data.name}</li> 
-      <li>Yelp Rating (overall rating): {data.yelp_rating}</li> 
-      <li>Review Rating (scores of 20 most relevant reviews averaged out): {data.review_rating}</li> 
-      <li>Model Rating: (model predicted scores of 20 most relevant reviews averaged out): {data.model_rating}</li> 
+      <ul>
+        <li>Business Name: {data.name}</li>
+        <li>Yelp Rating (overall rating): {data.yelp_rating}</li>
+        <li>Review Rating (scores of 20 most relevant reviews averaged out): {data.review_rating}</li>
+        <li>Model Rating: (model predicted scores of 20 most relevant reviews averaged out): {data.model_rating}</li>
+      </ul>
       <strong>Reviews</strong>
       <Reviews reviews={data.reviews} />
     </div>
@@ -68,7 +70,7 @@ export default class App extends React.Component {
     const data = this.state.data;
     
     return (
-      <div>
+      <div className="app">
         <form onSubmit={this.handleSubmit}>
           <label>
             <strong>Enter Yelp URL:</strong>
