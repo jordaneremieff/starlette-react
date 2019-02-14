@@ -108,6 +108,3 @@ venv.bak/
 
 # locally installed node modules
 node_modules/
-
-# rendered react assets
-backend/static/
