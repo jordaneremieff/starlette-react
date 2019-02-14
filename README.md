@@ -35,3 +35,8 @@ The React app was initially created using the `create-react-app` command.
 - Build front end assets to serve from the Python app:
 
     `make build`
+
+
+## Deploying 
+
+The app is configured to seamlessly run on [https://render.com/](Render). Make sure that front end assets are rendered in the branch you are deploying. 
